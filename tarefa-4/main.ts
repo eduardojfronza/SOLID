@@ -1,8 +1,6 @@
 interface Pagamento {
   valor: number;
-  pagarDinheiro(): void;
-  pagarTransferencia(): void;
-  pagarCheque(): void;
+  pagar(): void;
 }
 
 class PagamentoCheque implements Pagamento {
@@ -11,16 +9,9 @@ class PagamentoCheque implements Pagamento {
   constructor(valor: number) {
     this.valor = valor;
   }
-  pagarCheque(): void {
+
+  pagar(): void {
     console.log(`O pagamento de ${this.valor} será feito por cheque.`);
-  }
-
-  pagarDinheiro(): void {
-    throw new Error("Pagamento em cheque não pode ser pago por dinheiro.");
-  }
-
-  pagarTransferencia(): void {
-    throw new Error("Pagamento em cheque não pode ser pago por transferência.");
   }
 }
 
@@ -31,48 +22,28 @@ class PagamentoDinheiro implements Pagamento {
     this.valor = valor;
   }
 
-  pagarDinheiro(): void {
+  pagar(): void {
     console.log(`O pagamento de ${this.valor} será feito por dinheiro.`);
-  }
-
-  pagarTransferencia(): void {
-    throw new Error(
-      "Pagamento em dinheiro não pode ser pago por transferência."
-    );
-  }
-  pagarCheque(): void {
-    throw new Error("Pagamento em dinheiro não pode ser pago por cheque.");
   }
 }
 
-class PagamentoPorTransferencia implements Pagamento {
+class PagamentoPorPix implements Pagamento {
   valor: number;
 
   constructor(valor: number) {
     this.valor = valor;
   }
 
-  pagarTransferencia(): void {
-    console.log(`O pagamento de ${this.valor} será feito por transferência.`);
-  }
-  pagarDinheiro(): void {
-    throw new Error(
-      "Pagamento por transferência não pode ser recebido em dinheiro."
-    );
-  }
-
-  pagarCheque(): void {
-    throw new Error("Pagamento por transferência não pode ser pago em cheque.");
+  pagar(): void {
+    console.log(`O pagamento de ${this.valor} será feito por pix.`);
   }
 }
 
 const pagamentoCheque = new PagamentoCheque(100);
-pagamentoCheque.pagarCheque();
+pagamentoCheque.pagar();
 
 const pagamentoDinheiro = new PagamentoDinheiro(200);
-pagamentoDinheiro.pagarDinheiro();
+pagamentoDinheiro.pagar();
 
-const pagamentoTransferencia = new PagamentoPorTransferencia(300);
-pagamentoTransferencia.pagarTransferencia();
-
-pagamentoDinheiro.pagarTransferencia(); //🤔🤔🤔
+const pagamentoPix = new PagamentoPorPix(300);
+pagamentoPix.pagar();
