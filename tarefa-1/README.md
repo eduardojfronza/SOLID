@@ -2,7 +2,7 @@
 
 Recebemos um códgio mal estruturado, com alto acoplamento, mal otimizado e complexo de ler e entender. Objetivo é melhorar o código como um todo. O sistema atual está dessa maneira:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/f778cd8b-6c5f-4fbf-96e7-e587ebcde82a/6816dfdd-57f9-4f19-980e-035641f4ddb4/Untitled.png)
+![Untitled](assets/estrutura-antiga.png)
 
 O objetivo é diminuir o numero de métodos (responsabilidades) do ‘Sistema’. Será implementado tambem um classe de ‘Pagamento’. Para calcular o sálario teremos uma classe ‘CalcularSalario’ e outra para lidar com o ‘QuadroDeColaboradores’, onde vamos contratar, demitir e buscar esses colaboradores.
 
@@ -29,7 +29,7 @@ class GerenciadorUsuario {
   constructor(private usuario: Usuario) {}
 
   mostrarNomeUsuario(): void {
-    console.log(this.usuario.getNome());
+    console.log(this.usuario.gketNome());
   }
 }
 
